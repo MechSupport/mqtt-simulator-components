@@ -19,6 +19,40 @@ The panel controller connects the I/O devices to the ethernet network. It can be
 The name 'Panel Controller' comes from the physical layout of a cockpit. Panels are sections of the cockpit that have similar gauges or switches, all affixed to one solid surface. Each of these surfaces would have a dedicated panel controller that is then connected to the network.
 
 ## Input / Output Devices
+These are the actual devices that the user can interact with. They either show the status of the simulation or act as a human interface device for controlling the simulation. Each device (or sub-panel, in the case of switches or button boxes) has their own microcontroller that communicates with the panel controller via SPI. The device holds the name of the MQTT address and server IP that it is looking for in EEPROM and communicates it to the Panel Controller via SPI. The Panel Controller fetches this data and sends it back to the I/O device.
+
+# Examples:
+## Altimeter
+This is an example of a simple dial indicator. It would be constructed using a pair of servo motors connected together using a gear train to enable both needles to move independently. It requests the current altitude from the server and displays accordingly.
+
+Altimeter -> Requests /data/altitude from Panel Controller
+Panel Controller -> Requests /data/altitude from MQTT server
+MQTT -> Sends 10500 to Panel Controller
+Panel Controller -> Sends 10500 to Altimeter via SPI
+Altimeter -> Updates needle location
+
+Note: The server software is being updated by the simulator at 20-60Hz
+
+## Multi-Function Display (MFD)
+This is an example of a multi-function display commonly found in fighter aircraft. It is a square screen used for showing maps with buttons around the perimeter for changing map settings.
+
+MFD -> Receives button press fom user, requests /map from Panel Controller
+Panel Controller -> Requests /map from MQTT server
+MQTT -> Sends map.png to Panel Controller
+Panel Controller -> Sends map.png to MFD via SPI
+Altimeter -> Updates screen display
+
+Note: In this case the MFD's microcontroller would require more performance than the previous example. Something like a RPi Zero/2 W
+Note 2: This is approaching a solution where a RPi could be used for both the Panel Controller and the IO device are integrated together
+
+## Toggle Switch Array
+This is an example of a set of toggle switches for changing system settings in the simulation. In this case, it is an open loop feedback control as no response is required from the server.
+
+TSA -> Receives button press fom user, sends key "F4" to Panel Controller
+Panel Controller -> sends key "F4" to /inputControl on MQTT server
+MQTT Server -> Emulates "F4" keypress, clears /inputControl for next emulated command
+
+Note: If the server is not running on the simulator computer, a small client will need to be running on the simulator computer that reads /inputControl and emulates keypresses accordingly.
 
 # Design Principles
 
