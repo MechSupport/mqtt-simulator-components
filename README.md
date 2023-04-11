@@ -26,10 +26,15 @@ These are the actual devices that the user can interact with. They either show t
 This is an example of a simple dial indicator. It would be constructed using a pair of servo motors connected together using a gear train to enable both needles to move independently. It requests the current altitude from the server and displays accordingly.
 
 Altimeter -> Requests /data/altitude from Panel Controller
+
 Panel Controller -> Requests /data/altitude from MQTT server
+
 MQTT -> Sends 10500 to Panel Controller
+
 Panel Controller -> Sends 10500 to Altimeter via SPI
+
 Altimeter -> Updates needle location
+
 
 Note: The server software is being updated by the simulator at 20-60Hz
 
@@ -37,10 +42,15 @@ Note: The server software is being updated by the simulator at 20-60Hz
 This is an example of a multi-function display commonly found in fighter aircraft. It is a square screen used for showing maps with buttons around the perimeter for changing map settings.
 
 MFD -> Receives button press fom user, requests /map from Panel Controller
+
 Panel Controller -> Requests /map from MQTT server
+
 MQTT -> Sends map.png to Panel Controller
+
 Panel Controller -> Sends map.png to MFD via SPI
+
 Altimeter -> Updates screen display
+
 
 Note: In this case the MFD's microcontroller would require more performance than the previous example. Something like a RPi Zero/2 W
 Note 2: This is approaching a solution where a RPi could be used for both the Panel Controller and the IO device are integrated together
@@ -49,8 +59,12 @@ Note 2: This is approaching a solution where a RPi could be used for both the Pa
 This is an example of a set of toggle switches for changing system settings in the simulation. In this case, it is an open loop feedback control as no response is required from the server.
 
 TSA -> Receives button press fom user, sends key "F4" to Panel Controller
+
 Panel Controller -> sends key "F4" to /inputControl on MQTT server
+
 MQTT Server -> Emulates "F4" keypress, clears /inputControl for next emulated command
+
+
 
 Note: If the server is not running on the simulator computer, a small client will need to be running on the simulator computer that reads /inputControl and emulates keypresses accordingly.
 
