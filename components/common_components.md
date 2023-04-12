@@ -20,6 +20,6 @@ This file is to document common components to be used in the designs. These comp
 * 0603 SMD Profile: Use this size for as many of the components as possible
 
 ### Indication and Optoelectronic
-* IN-PI55QATPRPGPBPW-40: Any 5050 addressable RGB will do. Using addressable LEDs decreases component cost and modularity (e.g. indicators can be any color, as defined by a server command)
+* Seeed Tech 601000200: Any 5050 addressable RGB will do. Using addressable LEDs decreases component cost and modularity (e.g. indicators can be any color, as defined by a server command)
 
 ## Mechanical Components
