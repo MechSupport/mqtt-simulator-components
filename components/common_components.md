@@ -4,10 +4,9 @@ This file is to document common components to be used in the designs. These comp
 ## Electronic Components
 
 ### Microcontrollers (I/O)
-* ATTiny212: This small microcontroller is to be used for I/O devices requiring no more than 2 control signals (not including SPI pins, 8 available total)
-* ATTiny214: This small microcontroller is to be used for I/O devices requiring no more than 8 control signals (not including SPI pins, 12 available total)
-* ATTiny416: This small microcontroller is to be used for I/O devices requiring no more than 14 control signals (not including SPI pins, 18 available total)
-* ATTiny417: This small microcontroller is to be used for I/O devices requiring no more than 18 control signals (not including SPI pins, 22 available total)
+* ATTiny 0 Series: These are low cost and small footprint controllers. See below chart to decide which controller to use.
+
+![0 Series Comparison](https://daumemo.com/wp-content/uploads/2022/02/tinyAVR-ATtiny-seroes-0-microcontrollers-family-flash-and-pin-sizes-1200x549.png)
 
 ### Microcontrollers (Panel Controller)
 * ESP32: This microcontroller board is to be used for wireless panel controllers
