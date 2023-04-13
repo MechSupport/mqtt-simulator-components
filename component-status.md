@@ -15,5 +15,5 @@ This file is for organizing device development and requests. Add a device with t
 * Request - Complex analog gauge (altimeter style)
 * Request - Generic light indicator (see blinkenlights)
 * Request - MFD screen
-* Request - Generic Audio (alarms, notificaitons, etc.)
+* Request - Generic Audio (alarms, notifications, etc.)
 * Request - Generic Relay (e.g. to diconnect the reactor core)
