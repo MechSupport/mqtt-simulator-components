@@ -16,3 +16,4 @@ This file is for organizing device development and requests. Add a device with t
 * Request - Generic light indicator (see blinkenlights)
 * Request - MFD screen
 * Request - Generic Audio (alarms, notificaitons, etc.)
+* Request - Generic Relay (e.g. to diconnect the reactor core)
