@@ -20,5 +20,6 @@ This file is to document common components to be used in the designs. These comp
 
 ### Indication and Optoelectronic
 * Seeed Tech 601000200: Any 5050 addressable RGB will do. Using addressable LEDs decreases component cost and modularity (e.g. indicators can be any color, as defined by a server command)
+* VIM-878-DP-FC-S-LV: Transflective 8 x 14 segment LCD for timers or words. Can be used with an LED backlight.
 
 ## Mechanical Components
